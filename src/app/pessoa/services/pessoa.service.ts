@@ -24,10 +24,10 @@ export class PessoaService {
     localStorage[LS_CHAVE] = JSON.stringify(pessoas);
   }
 
-  buscarPorId(id: number): Pessoa | undefined {
+  buscarPorId(id: number): Pessoa {
     const pessoas = this.listarTodos();
 
-    return pessoas.find(pessoa => pessoa.id === id);
+    return pessoas.find(pessoa => pessoa.id === id)!;
   }
 
   atualizar(pessoa: Pessoa): void{
