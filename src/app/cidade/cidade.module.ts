@@ -7,13 +7,15 @@ import { CidadeService } from './services/cidade.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ModalCidadeComponent } from './modal-cidade/modal-cidade.component';
 
 
 @NgModule({
   declarations: [
     ListarCidadeComponent,
     InserirCidadeComponent,
-    EditarCidadeComponent
+    EditarCidadeComponent,
+    ModalCidadeComponent
   ],
   imports: [
     CommonModule,

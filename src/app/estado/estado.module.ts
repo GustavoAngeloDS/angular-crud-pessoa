@@ -7,13 +7,15 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { EstadoService } from './services/estado.service';
 import { SharedModule } from '../shared/shared.module';
+import { ModalEstadoComponent } from './modal-estado/modal-estado.component';
 
 
 @NgModule({
   declarations: [
     ListarEstadoComponent,
     InserirEstadoComponent,
-    EditarEstadoComponent
+    EditarEstadoComponent,
+    ModalEstadoComponent
   ],
   imports: [
     CommonModule,

@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { EditarEnderecoComponent } from './editar-endereco/editar-endereco.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { ModalEnderecoComponent } from './modal-endereco/modal-endereco.component';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
 @NgModule({
   declarations: [
     ListarEnderecoComponent,
     InserirEnderecoComponent,
-    EditarEnderecoComponent
+    EditarEnderecoComponent,
+    ModalEnderecoComponent
   ],
   imports: [
     CommonModule,
