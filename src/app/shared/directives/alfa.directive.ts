@@ -2,7 +2,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: '[appAlfa]',
+  selector: '[alfa]',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: AlfaDirective,
@@ -18,14 +18,13 @@ export class AlfaDirective implements ControlValueAccessor{
 
   @HostListener('keyup', ['$event'])
   onKeyUp($event: any){
+    
     let valor = $event.target.value;
 
-    /* implements regex here */
-    valor = valor.replace('X', '');
+    valor = valor.replace(/\d+((.|,)\d+)?/, '');
     $event.target.value = valor;
     this.onChange(valor);
   }
-
   
   registerOnChange(fn: any): void {
     this.onChange = fn;

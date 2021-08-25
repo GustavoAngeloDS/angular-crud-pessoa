@@ -6,7 +6,7 @@ import { EditarCidadeComponent } from './editar-cidade/editar-cidade.component';
 import { CidadeService } from './services/cidade.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [
     CidadeService

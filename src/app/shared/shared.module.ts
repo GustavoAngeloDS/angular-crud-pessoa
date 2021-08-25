@@ -15,7 +15,8 @@ import { AlfaDirective } from './directives/alfa.directive';
   exports: [
     MinimoValidatorDirective,
     NumericoDirective,
-    MeuPipePipe    
+    MeuPipePipe,
+    AlfaDirective
   ]
 })
 export class SharedModule { }

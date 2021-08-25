@@ -6,7 +6,7 @@ import { EditarEstadoComponent } from './editar-estado/editar-estado.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { EstadoService } from './services/estado.service';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { EstadoService } from './services/estado.service';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [
     EstadoService
