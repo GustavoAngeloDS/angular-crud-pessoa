@@ -9,6 +9,8 @@
       <th>CEP</th>
       <th>Cidade</th>
       <th>Estado</th>
+      <th>Tipo Endereço</th>
+      <th>Tipo Rua</th>
       <th class="text-center">
         <a [routerLink]="['/enderecos/novo']" href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success">
           <i class="fa fa-plus" aria-hidden="true"></i> Novo
@@ -21,8 +23,10 @@
       <td> {{endereco.complemento}} </td>
       <td> {{endereco.bairro}} </td>
       <td> {{endereco.cep! | mask: '00000-000'}} </td>
-      <td> {{endereco.cidade}} </td>
+      <td> {{ endereco?.cidade?.nome }} - {{ endereco?.cidade?.estado?.sigla }} </td>
       <td> {{endereco.estado}} </td>
+      <td> {{endereco.residencial! ? "Residencial" : "Comercial"}} </td>
+      <td> {{endereco.tipo! ? endereco.tipo : "Não preenchido"}} </td>
       <td class="text-center" style="width: 300px">
         <a [routerLink]="['/endereco/editar', endereco.id]" href="#" title="Editar" alt="Editar" class="btn btn-xs btn-info">
           <i class="fa fa-edit" aria-hidden="true"></i> Editar

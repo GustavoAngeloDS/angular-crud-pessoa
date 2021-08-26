@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EstadoService } from 'src/app/estado/services/estado.service';
 import { Cidade } from 'src/app/shared/models/cidade.model';
+import { Estado } from 'src/app/shared/models/estado.model';
 import { CidadeService } from '../services/cidade.service';
 
 @Component({
@@ -13,12 +15,14 @@ export class EditarCidadeComponent implements OnInit {
   @ViewChild("formCidade") formCidade!: NgForm;
 
   cidade!: Cidade;
+  estados!: Estado[];
 
-  constructor(private cidadeService: CidadeService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private cidadeService: CidadeService, private estadoService: EstadoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     let id = +this.route.snapshot.params['id'];
     this.cidade = this.cidadeService.buscarPorId(id);
+    this.estados = this.estadoService.listarTodos();
   }
 
   atualizar(): void{

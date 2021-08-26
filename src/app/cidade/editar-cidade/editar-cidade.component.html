@@ -3,7 +3,8 @@
   <form #formCidade="ngForm">
     <div class="form-group">
       <label for="nome">Nome:</label>
-      <input type="text" [(ngModel)]="cidade.nome" #nome="ngModel" class="form-control" id="nome" name="nome" minlength="5" required>
+      <input type="text" [(ngModel)]="cidade.nome" #nome="ngModel" class="form-control" id="nome" name="nome"
+        minlength="5" required>
       <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
         <div [hidden]="!nome.errors.required"> Preencha o nome da cidade. </div>
         <div [hidden]="!nome.errors.minlength"> O nome da cidade deve conter ao menos 5 caracteres. </div>
@@ -11,7 +12,9 @@
     </div>
     <div class="form-group">
       <label for="estado">Estado:</label>
-      <input type="text" [(ngModel)]="cidade.estado" #estado="ngModel" class="form-control" id="estado" name="estado" minlength="2" required>
+      <ng-select name="estado" [items]="estados" bindLabel="sigla" [(ngModel)]="cidade.estado" #estado="ngModel"
+        placeholder="Selecione um estado">
+      </ng-select>
       <div *ngIf="estado.errors && (estado.dirty || estado.touched)" class="alert alert-danger">
         <div [hidden]="!estado.errors.required"> Digite o nome do estado. </div>
         <div [hidden]="!estado.errors.minlength"> O nome do estado deve conter ao menos 2 caracteres. </div>

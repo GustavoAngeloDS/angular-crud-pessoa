@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { EstadoService } from './services/estado.service';
 import { SharedModule } from '../shared/shared.module';
 import { ModalEstadoComponent } from './modal-estado/modal-estado.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { ModalEstadoComponent } from './modal-estado/modal-estado.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgSelectModule
   ],
   providers: [
     EstadoService
