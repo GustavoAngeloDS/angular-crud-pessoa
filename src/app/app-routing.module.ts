@@ -12,11 +12,15 @@ import { EditarCidadeComponent } from './cidade/editar-cidade/editar-cidade.comp
 import { ListarEstadoComponent } from './estado/listar-estado/listar-estado.component';
 import { InserirEstadoComponent } from './estado/inserir-estado/inserir-estado.component';
 import { EditarEstadoComponent } from './estado/editar-estado/editar-estado.component';
+import { AuthGuard } from './auth/auth.guard';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './auth/login/login.component';
+import { LoginRoutes } from './auth/auth-routing.module';
 
 const routes: Routes = [
-{
+  {
   path: '',
-  redirectTo: 'pessoas/listar',
+  redirectTo: 'login',
   pathMatch: 'full'
 },
 {
@@ -25,15 +29,27 @@ const routes: Routes = [
 },
 {
   path: 'pessoas/listar',
-  component: ListarPessoaComponent
+  component: ListarPessoaComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,GERENTE,FUNC'
+  }
 },
 {
   path: 'pessoas/novo',
-  component: InserirPessoaComponent
+  component: InserirPessoaComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,GERENTE,FUNC'
+  }
 },
 {
   path: 'pessoas/editar/:id',
-  component: EditarPessoaComponent
+  component: EditarPessoaComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,GERENTE,FUNC'
+  }
 },
 {
   path: 'enderecos',
@@ -41,15 +57,27 @@ const routes: Routes = [
 },
 {
   path: 'enderecos/listar',
-  component: ListarEnderecoComponent
+  component: ListarEnderecoComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,GERENTE'
+  }
 },
 {
   path: 'enderecos/novo',
-  component: InserirEnderecoComponent
+  component: InserirEnderecoComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,GERENTE'
+  }
 },
 {
   path: 'endereco/editar/:id',
-  component: EditarEnderecoComponent
+  component: EditarEnderecoComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,GERENTE'
+  }
 },
 {
   path: 'cidades',
@@ -57,15 +85,27 @@ const routes: Routes = [
 },
 {
   path: 'cidades/listar',
-  component: ListarCidadeComponent
+  component: ListarCidadeComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'GERENTE'
+  }
 },
 {
   path: 'cidades/novo',
-  component: InserirCidadeComponent
+  component: InserirCidadeComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'GERENTE'
+  }
 },
 {
   path: 'cidade/editar/:id',
-  component: EditarCidadeComponent
+  component: EditarCidadeComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'GERENTE'
+  }
 },
 {
   path: 'estados',
@@ -73,16 +113,38 @@ const routes: Routes = [
 },
 {
   path: 'estados/listar',
-  component: ListarEstadoComponent
+  component: ListarEstadoComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,FUNC'
+  }
 },
 {
   path: 'estados/novo',
-  component: InserirEstadoComponent
+  component: InserirEstadoComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,FUNC'
+  }
 },
 {
   path: 'estado/editar/:id',
-  component: EditarEstadoComponent
-}];
+  component: EditarEstadoComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,FUNC'
+  }
+},
+{
+  path: 'home',
+  component: HomeComponent,
+  canActivate: [AuthGuard],
+  data: {
+    role: 'ADMIN,GERENTE,FUNC'
+  }
+},
+  ...LoginRoutes  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
